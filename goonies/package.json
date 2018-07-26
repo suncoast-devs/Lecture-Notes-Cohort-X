@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "deploy": "surge ./public --domain goonies.markdewey.surge.sh",
+    "start": "browser-sync start --server \"public\" --files \"public\""
+  },
+  "dependencies": {
+    "browser-sync": "^2.24.6",
+    "stylelint": "^9.4.0",
+    "stylelint-config-standard": "^18.2.0",
+    "surge": "^0.19.0"
+  }
+}
