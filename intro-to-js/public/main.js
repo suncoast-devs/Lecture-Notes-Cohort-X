@@ -24,7 +24,7 @@ const buttonClickEvent = () => {
 
   // add 1 to it
   // currentValue += 1 Does not work because types :-(
-  const newValue = currentValue + 1 
+  const newValue = currentValue + 1
 
   // put the new value back into the DOM
   document.querySelector('#output').textContent = newValue
