@@ -1,8 +1,12 @@
-let randomPick = 0
+
+const generateRandomNumber = () => {
+  return Math.ceil(Math.random() * 10)
+}
+
+const randomPick = generateRandomNumber()
 
 const init = () => {
   // pick a random number between 1 and 10
-  randomPick = Math.ceil(Math.random() * 10)
   console.log('the current number is ', randomPick)
 }
 
