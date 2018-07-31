@@ -16,6 +16,12 @@ const updatePlayerName = () => {
   document.querySelector('#playerName').textContent = playerName
 }
 
+const addMessageToList = (message) => {
+  const newLi = document.createElement('li')
+  newLi.textContent = message
+  document.querySelector('#output').appendChild(newLi)
+}
+
 const compareGuess = () => {
   console.log('comparing guess')
   // get the playerguess
@@ -33,40 +39,32 @@ const compareGuess = () => {
       if (playerGuess === randomPick) {
         // display success message
         console.log('success')
-        const newLi = document.createElement('li')
-        newLi.textContent = 'Success!!!!'
         // clear the list, then add success
         const parent = document.querySelector('#output')
         parent.textContent = ''
-        parent.appendChild(newLi)
+        addMessageToList('Success!!!')
       } else {
         // display nope message
         console.log('nope')
         // create a li, that has teh text "try again" add it to the html
         // TODO: tell the user if their guess is too high or tooooo low
-        const newLi = document.createElement('li')
+        let errorMessage = ""
         if (playerGuess > randomPick) {
           // too high
-          newLi.textContent = playerGuess + ' is too high'
+          errorMessage = playerGuess + ' is too high'
         } else {
           // by default, its too low
-          newLi.textContent = playerGuess + ' is too low'
+          errorMessage = playerGuess + ' is too low'
         }
-        document.querySelector('#output').appendChild(newLi)
+        addMessageToList(errorMessage)
       }
     } else {
-      const newLi = document.createElement('li')
-      newLi.textContent = 'Try again, with a number in the range 1 to 10'
-      document.querySelector('#output').appendChild(newLi)
+      addMessageToList('Try again, with a number in the range 1 to 10')
     }
   } else {
-    // decimal
-    const newLi = document.createElement('li')
-    newLi.textContent = 'Try again, with a whole number'
-    document.querySelector('#output').appendChild(newLi)
-
+    // decima
+    addMessageToList('Try again, with a whole number')
   }
-
 }
 
 document.addEventListener('DOMContentLoaded', init)
