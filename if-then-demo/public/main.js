@@ -16,5 +16,19 @@ const updatePlayerName = () => {
   document.querySelector('#playerName').textContent = playerName
 }
 
+const compareGuess = () => {
+  console.log('comparing guess')
+  // get the playerguess
+  const playerGuess = parseInt(document.querySelector('.player-guess').value)
+  if (playerGuess === randomPick) {
+    // display success message
+    console.log('success')    
+  } else {
+    // display nope message
+    console.log('nope')
+  }
+}
+
 document.addEventListener('DOMContentLoaded', init)
 document.querySelector('.player-name-input').onchange = updatePlayerName
+document.querySelector('#guessButton').addEventListener('click', compareGuess)
