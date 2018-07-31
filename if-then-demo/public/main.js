@@ -28,7 +28,7 @@ const compareGuess = () => {
   // if its in the range 
   
   // make sure that the guess is a number
-  if (playerGuess && playerGuess <= 10 && playerGuess >= 1) {
+  if (playerGuess < 11 && playerGuess > 0) {
     if (playerGuess === randomPick) {
       // display success message
       console.log('success')
