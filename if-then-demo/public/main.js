@@ -62,7 +62,7 @@ const compareGuess = () => {
   } else {
     // decimal
     const newLi = document.createElement('li')
-    newLi.textContent = 'Try again, with a whole number in the range 1 to 10'
+    newLi.textContent = 'Try again, with a whole number'
     document.querySelector('#output').appendChild(newLi)
 
   }
