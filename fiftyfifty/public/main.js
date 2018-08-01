@@ -15,7 +15,17 @@ const addNameToBucket = () => {
   li.classList.add('raffle-contestant')
   document.querySelector('#bucketList').appendChild(li)
   document.querySelector('#nameTextbox').value = ''
+
+  document.querySelector('#currentTotal').textContent = bucket.length * 5
+
+}
+
+const selectWinner = () => {
+  // randomly pick from array the winner
+  const winner = bucket[Math.floor(Math.random() * bucket.length)]
+  console.log(winner)
 }
 
 document.addEventListener('DOMContentLoaded', main)
 document.querySelector('#addNameToBucketButton').addEventListener('click', addNameToBucket)
+document.querySelector('.announceWinner').addEventListener('click', selectWinner)
