@@ -9,6 +9,12 @@ const addNameToBucket = () => {
   console.log('adding ' + name + ' to bucket')
   bucket.push(name)
   console.log(bucket)
+  const li = document.createElement('li')
+  li.textContent = name
+  // add the class
+  li.classList.add('raffle-contestant')
+  document.querySelector('#bucketList').appendChild(li)
+  document.querySelector('#nameTextbox').value = ''
 }
 
 document.addEventListener('DOMContentLoaded', main)

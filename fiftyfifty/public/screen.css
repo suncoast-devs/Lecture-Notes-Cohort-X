@@ -7,3 +7,13 @@ body {
   min-height: 100%;
   font: 16px / 1 sans-serif;
 }
+
+ul{
+  list-style: none;
+}
+
+.raffle-contestant{
+  background-color: blue;
+  border:3px dotted yellow;
+  color:green;
+}

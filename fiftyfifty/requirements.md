@@ -8,6 +8,7 @@
         - [x] on button click, store name into array
     - [x] store that name in an array "bucket"
         - [x] on button click `bucket.push(name)`
+- [ ] Display all people in raffle
 - [ ] random pick a ticket that was purchased 
     - half the money goes to ....somewhere else
     - half the money goes to the prize, winner
