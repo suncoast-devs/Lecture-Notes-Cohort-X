@@ -9,7 +9,7 @@
     - [x] store that name in an array "bucket"
         - [x] on button click `bucket.push(name)`
 - [x] Display all people in raffle
-- [ ] random pick a ticket that was purchased 
+- [X] random pick a ticket that was purchased 
     - half the money goes to ....somewhere else
     - half the money goes to the prize, winner
 - [ ] reset the Raffle
