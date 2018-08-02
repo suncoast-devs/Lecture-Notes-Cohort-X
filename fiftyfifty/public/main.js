@@ -14,12 +14,19 @@ const addNameToBucket = () => {
     winnerWasSelected = false
     document.querySelector('.winner').textContent = ''
   }
-  const name = document.querySelector('#nameTextbox').value
-  console.log('adding ' + name + ' to bucket')
-  bucket.push(name)
+
+  const _ticketsBought = parseInt(document.querySelector("#numberOfTicketsBoughtBox").value)
+  const buyer = {
+    name: document.querySelector('#nameTextbox').value,
+    ticketsBought: _ticketsBought,
+    amountPaid: _ticketsBought * 5
+  }
+  console.log(buyer)
+  bucket.push(buyer)
   console.log(bucket)
   const li = document.createElement('li')
-  li.textContent = name
+  
+  li.textContent = buyer.name
   // add the class
   li.classList.add('raffle-contestant')
   bucketList.appendChild(li)
