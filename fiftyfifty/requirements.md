@@ -27,7 +27,8 @@ Assumption: Each ticket is 5$, a user can buy multiple tickets
     - [x] add textbox to see how many tickets they bought
     - [x] store the amount paid, per person
     - [x] store the number of tickets per person
-- [ ] Update how the pot total is calculated
+- [x] Update how the pot total is calculated
+    - loop the array, add the amounts paid to a total as we go 
 - [ ] Update the winner/organize money split
 - [ ] Update the winner select to reflect multiple tickets
 
@@ -35,6 +36,7 @@ Assumption: Each ticket is 5$, a user can buy multiple tickets
 #### BONUS: 
 - rig the system
 - "Mike Smith Problem"
+- fix the negative number
 
 
 
