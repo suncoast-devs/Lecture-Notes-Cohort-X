@@ -52,12 +52,24 @@ const addNameToBucket = () => {
 
 
 const selectWinner = () => {
+  const tickets = []
+
+  // push the amount times they have a ticket
+  for (let i = 0; i < bucket.length; i++) {
+    const buyer = bucket[i];
+    for (let j = 0; j < buyer.ticketsBought; j++) {
+      tickets.push(buyer.name);
+    }
+  }
+  
+  console.log(tickets)
+ 
   // randomly pick from array the winner
-  const winner = bucket[Math.floor(Math.random() * bucket.length)]
+  const winner = tickets[Math.floor(Math.random() * bucket.length)]
   console.log(winner)
   // display the winner
   // say how much money they won
-  document.querySelector('.winner').textContent = winner + ' has won $' + ((bucket.length * 5) / 2).toFixed(2)
+  document.querySelector('.winner').textContent = winner + ' has won $' + (getCurrentTotalFromBucket() / 2).toFixed(2)
   winnerWasSelected = true
 }
 

@@ -29,8 +29,11 @@ Assumption: Each ticket is 5$, a user can buy multiple tickets
     - [x] store the number of tickets per person
 - [x] Update how the pot total is calculated
     - loop the array, add the amounts paid to a total as we go 
-- [ ] Update the winner/organize money split
+- [ ] Update the winner/organize money split    
 - [ ] Update the winner select to reflect multiple tickets
+    - PROBLEM: if tina bought 5 tickets and bob buys 1 ticket, they each have the same chance of winning
+    - SOLUTION: make a new array, that has each buyers in the array, the amount of times they bought a ticket, then select winner from that array 
+
 
 
 #### BONUS: 
