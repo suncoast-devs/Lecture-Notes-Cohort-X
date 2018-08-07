@@ -24,9 +24,10 @@ const main = () => {
   // 
   const lis = deck
     .map(convertCardToLi)
-    
+  
   lis.forEach(addCardToDeckList)
 
+  // past here, i dont care about lis
   // filter & reduce
   const sum = deck.filter(card => {
     return card.value < 10
