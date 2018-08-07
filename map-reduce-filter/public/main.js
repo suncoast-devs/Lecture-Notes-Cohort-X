@@ -56,7 +56,15 @@ const showOnlyKings = () => {
   }).map(convertCardToLi).forEach(addCardToDeckList)
 }
 
-document.addEventListener('DOMContentLoaded', main)
+const othermain = () => {
+
+  fetch("https://swapi.co/api/people/6").then(resp => {console.log({resp}); return resp.json()}).then(json => {
+    console.log(json)
+  })
+}
+
+
+document.addEventListener('DOMContentLoaded', othermain)
 document.querySelector(".kingsOnlyButton").addEventListener('click', showOnlyKings)
 
 
