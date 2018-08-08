@@ -1,9 +1,9 @@
-class Person{
-  constructor(characteristics){
+class Person {
+  constructor(characteristics) {
     this.characteristics = characteristics
   }
 
-  render () {
+  render() {
     const person = this.characteristics
     const li = document.createElement('li')
 
@@ -20,10 +20,29 @@ class Person{
   }
 }
 
+class Planet {
+  constructor(characteristics) {
+    this.characteristics = characteristics
+  }
+
+  render() {
+    const planet = this.characteristics
+    console.log(this.characteristics)
+
+    const li = document.createElement('li')
+    const _name = document.createElement('h4')
+    _name.textContent = planet.name
+    li.appendChild(_name)
+    return li
+  }
+}
+
 class Search {
-  constructor(searchTerm) {
+  constructor(searchTerm, endPoint, itemRenderFunction) {
     this.searchTerm = searchTerm
-    this.searchUrl = 'https://swapi.co/api/people/?search=' + searchTerm
+    this.searchUrl = `https://swapi.co/api/${endPoint}/?search=${searchTerm}`
+    // this.searchUrl = 'https://swapi.co/api/'+endPoint+'/?search=' + searchTerm
+    this.itemRenderFunction = itemRenderFunction
   }
 
   getSearchResults() {
@@ -38,18 +57,32 @@ class Search {
       }).then(searchResults => {
         console.log("search results = ", searchResults)
         const parent = document.querySelector('.searchResults')
+        parent.textContent = ''
         searchResults.results.forEach(result => {
-          const person = new Person(result)
-          parent.appendChild(person.render())
+          this.itemRenderFunction(result, parent)
         });
       })
   }
 }
 
-const searchAPIEvent = () => {
-  const userInput = document.querySelector('.input').value
-  const apiSearch = new Search(userInput)
+const searchByNameEvent = () => {
+  const userInput = document.querySelector('.input-name').value
+  const apiSearch = new Search(userInput, "people", (result, parent) => {
+    const item = new Person(result)
+    parent.appendChild(item.render())
+  })
   apiSearch.getSearchResults()
 }
 
-document.querySelector('.input').addEventListener('blur', searchAPIEvent)
+const searchByPlanetEvent = () => {
+  const userInput = document.querySelector('.input-planet').value
+  const apiSearch = new Search(userInput, 'planets', (result, parent) => {
+    const item = new Planet(result)
+    parent.appendChild(item.render())
+  })
+  apiSearch.getSearchResults()
+}
+
+document.querySelector('.input-name').addEventListener('blur', searchByNameEvent)
+document.querySelector('.input-planet').addEventListener('blur', searchByPlanetEvent)
+// document.querySelector('.input-vehicle').addEventListener('blur', searchByVehicleEvent)
