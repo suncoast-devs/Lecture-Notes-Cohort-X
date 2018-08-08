@@ -20,8 +20,6 @@ class Person{
   }
 }
 
-
-
 class Search {
   constructor(searchTerm) {
     this.searchTerm = searchTerm
