@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.character {
+  display: flex;
+}
+
+.character img {
+  height: 120px;
+  width: auto;
+}
