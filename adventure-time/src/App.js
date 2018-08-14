@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import CharacterList from './CharacterList'
 
+import Character from './Character'
+
 class App extends Component {
   render() {
     const title = 'Adventure Time'

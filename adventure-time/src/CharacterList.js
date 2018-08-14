@@ -8,7 +8,11 @@ class CharacterList extends Component {
       <section className="CharacterList">
         <ul>
           {characters.map((character, idx) => {
-            return <Character name={character.name} image={character.image} bio={character.details} key={idx} />
+            return <Character 
+                  name={character.name} 
+                  image={character.image} 
+                  bio={character.details} 
+                  key={idx} />
           })}
         </ul>
       </section>
