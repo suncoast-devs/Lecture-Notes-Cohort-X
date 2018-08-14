@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CurrentWeather/>
+        <CurrentWeather zip="32830"/>
       </div>
     );
   }
