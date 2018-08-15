@@ -20,8 +20,12 @@ class CurrentWeather extends Component {
         }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timer)
+    }
+
     componentDidMount() {
-        setInterval(() => {
+        this.timer = setInterval(() => {
             const key = "5c418bd61b262dfeab5ee02852a70c07"
             const _url = `https://api.openweathermap.org/data/2.5/weather?q=${this.props.zip}&appid=${key}`
             fetch(_url).then(resp => resp.json())
