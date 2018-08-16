@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from './Card';
 
 const FACES = ['🤖', '🐢', '🐼', '🐙', '👾', '👹', '🐢', '👾', '😱', '🤖', '🐲', '🐙', '😱', '👹', '🐼', '🐲']
 
@@ -13,15 +14,12 @@ class MemoryGame extends Component {
     }
 
     choose = (chosenIndex) => {
-        console.log("the item was choose: ", chosenIndex, this.state.picks)
         if (this.state.picks.length < 2) {
             this.setState({
                 picks: this.state.picks.concat(chosenIndex)
             }, () => {
-                console.log("state was updated")
                 if (this.state.picks.length ===2){
                     if (FACES[this.state.picks[0]] === FACES[this.state.picks[1]]) {
-                        console.log("matched!")
                         this.setState({
                             matched: this.state.matched.concat(this.state.picks),
                             picks:[]
@@ -30,7 +28,6 @@ class MemoryGame extends Component {
                         this.setState({
                             picks:[]
                         })
-                        console.log("nope, no match")
                     }
                 }
             })
@@ -43,12 +40,7 @@ class MemoryGame extends Component {
         return (
             <div>
                 {FACES.map((face, i) => {
-                    return <span
-                        className="face-up-card-style"
-                        onClick={() => this.choose(i)}
-                        key={i}>
-                        {face}
-                    </span>
+                    return <Card key={i} faceUpCards={this.state.picks.concat(this.state.matched)} displayText={face} index={i} choose={this.choose}/>
                 })}
             </div>
         );
