@@ -15,7 +15,8 @@ class App extends Component {
       pick1:null,
       pick1Pos:null,
       pick2:null,
-      pick2Pos:null
+      pick2Pos:null, 
+      picked: []
     }
   }
   
@@ -30,7 +31,9 @@ class App extends Component {
         console.log("checkin", this.state)
         if (this.state.pick1 === this.state.pick2){
           console.log("winner")
-          
+          this.setState({
+            picked:this.state.picked.concat(this.state.pick1)
+          })
         } else {
           console.log('no match')
         }
@@ -59,13 +62,14 @@ class App extends Component {
 
 
   render() {
+    console.log(this.sta)
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title" >Welcome to React</h1>
         </header>
-        <MemoryGame posPiced={[this.state.pick1Pos,this.state.pick2Pos]}faces={faces} compare={this.compareFaces} />
+        <MemoryGame picked={this.state.picked}  posPiced={[this.state.pick1Pos,this.state.pick2Pos]}faces={faces} compare={this.compareFaces} />
       </div>
     );
   }
