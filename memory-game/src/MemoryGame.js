@@ -8,7 +8,12 @@ class MemoryGame extends Component {
         return (
             <div>
                 {this.props.faces.map((face,i) => {
-                    return <h1 key={i} onClick={() => this.props.compare(face)}>{face}</h1>
+                    if (this.props.posPiced.indexOf(i) >=0){
+                        return <h1 key={i} onClick={() => this.props.compare(face, i)}>{face}</h1>
+                    } else {
+                        return <h1 key={i} onClick={() => this.props.compare(face, i)}>[hidden]</h1>
+
+                    }
                 })}
             </div>
         );

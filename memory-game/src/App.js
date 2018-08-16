@@ -13,7 +13,9 @@ class App extends Component {
     super(props);
     this.state = {
       pick1:null,
-      pick2:null
+      pick1Pos:null,
+      pick2:null,
+      pick2Pos:null
     }
   }
   
@@ -34,16 +36,18 @@ class App extends Component {
         }
         this.setState({
           pick1:null, 
-          pick2:null
+          pick2:null, 
+          pick1Pos:null,
+          pick2Pos:null
         })
       } else {
         console.log("not checking")
       }
     }
     if (this.state.pick1){
-      this.setState({pick2:face}, _callback)
+      this.setState({pick2:face, pick1Pos:posPicked}, _callback)
     } else {
-      this.setState({pick1:face}, _callback)
+      this.setState({pick1:face, pick2Pos: posPicked}, _callback)
     }
 
     
@@ -61,7 +65,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title" >Welcome to React</h1>
         </header>
-        <MemoryGame faces={faces} compare={this.compareFaces} />
+        <MemoryGame posPiced={[this.state.pick1Pos,this.state.pick2Pos]}faces={faces} compare={this.compareFaces} />
       </div>
     );
   }
