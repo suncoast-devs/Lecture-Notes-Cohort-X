@@ -26,3 +26,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.cell{
+  border:3px solid black;
+  padding: 0.1em;
+  margin: 0.1em;
+  width: 1em;
+  height: 1em;
+}
