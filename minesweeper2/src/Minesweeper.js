@@ -10,13 +10,10 @@ class Minesweeper extends Component {
             game: {
                 board: []
             },
-            message: ''
-
+            message: '',
+            level: 0
         }
     }
-
-
-
 
     displayGameResult() {
         if (this.state.game.state === "lost") {
@@ -38,7 +35,7 @@ class Minesweeper extends Component {
     createGame() {
         fetch(`${BASE_URL}games`, {
             method: "POST",
-            body: JSON.stringify({ difficulty: 0 }),
+            body: JSON.stringify({ difficulty: this.state.level }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -97,11 +94,24 @@ class Minesweeper extends Component {
         this.createGame()
     }
 
+    handleDifficultyChange = (event) => {
+        this.setState({
+            level: event.target.value
+        }, () => {
+            this.createGame()
+        })
+    }
+
     render() {
         return (
             <div>
                 <h1>{this.state.message}</h1>
                 <section>
+                    <select onChange={(event) => this.handleDifficultyChange(event)}>
+                        <option value="0">Easy</option>
+                        <option value="1">Normal</option>
+                        <option value="2">Haaaard</option>
+                    </select>
                     <button onClick={this.resetEvent}><span role="img">😄</span></button>
                 </section>
                 <table>
