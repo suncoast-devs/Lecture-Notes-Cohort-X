@@ -31,6 +31,24 @@ class Minesweeper extends Component {
             })
     }
 
+    handleCellClick = (row, col) => {
+        console.log("clicked", row, col)
+        fetch(`${BASE_URL}games/${this.state.game.id}/check`, {
+            method: "POST",
+            body: JSON.stringify({ row:row, col:col }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(resp => resp.json())
+            .then(newGameState => {
+                console.log(newGameState)
+                this.setState({
+                    game: newGameState
+                })
+            })
+    }
+
     render() {
         return (
             <table>
@@ -38,7 +56,8 @@ class Minesweeper extends Component {
                     {this.state.game.board.map((row, i) => {
                         return <tr key={i}>{
                             row.map((col, j) => {
-                                return <td key={j} className="cell">{this.state.game.board[i][j]}</td>
+                                return <td key={j} className="cell"
+                                    onClick={() => this.handleCellClick(i,j)}>{this.state.game.board[i][j]}</td>
                             })
                         }</tr>
                     })}
