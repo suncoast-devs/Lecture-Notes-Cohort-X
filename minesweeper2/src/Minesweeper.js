@@ -7,45 +7,43 @@ class Minesweeper extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            game:{
-                board:[]
+            game: {
+                board: []
             }
         }
     }
-    
 
-    componentDidMount () {
+
+    componentDidMount() {
         fetch(`${BASE_URL}games`, {
-            method:"POST",
-            body:JSON.stringify({difficulty:0}),
-            headers:{
-                'Content-Type':'application/json'
+            method: "POST",
+            body: JSON.stringify({ difficulty: 0 }),
+            headers: {
+                'Content-Type': 'application/json'
             }
         })
-        .then(resp => resp.json())
-        .then(newGame => {
-            console.log(newGame)
-            this.setState({
-                game:newGame
+            .then(resp => resp.json())
+            .then(newGame => {
+                console.log(newGame)
+                this.setState({
+                    game: newGame
+                })
             })
-        })
     }
 
     render() {
         return (
-            <div>
-                <table>
-                    <tbody>
-                      {this.state.game.board.map((row, i) => {
-                         return  <tr key={i}>{
-                             row.map((col, j) => {
-                                 return <td key={j} className="cell">{this.state.game.board[i][j]}</td>
-                             })
-                         }</tr>
-                      })}
-                    </tbody>
-                </table>
-            </div>
+            <table>
+                <tbody>
+                    {this.state.game.board.map((row, i) => {
+                        return <tr key={i}>{
+                            row.map((col, j) => {
+                                return <td key={j} className="cell">{this.state.game.board[i][j]}</td>
+                            })
+                        }</tr>
+                    })}
+                </tbody>
+            </table>
         );
     }
 }
