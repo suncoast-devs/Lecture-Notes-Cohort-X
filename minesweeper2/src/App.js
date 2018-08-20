@@ -7,6 +7,8 @@ class App extends Component {
     return (
       <div className="App">
         <Minesweeper/>  
+        {/* <h1 className="hide-winner">You won!</h1>
+        <h1 className="hide-loser">You lost!</h1> */}
       </div>
     );
   }
