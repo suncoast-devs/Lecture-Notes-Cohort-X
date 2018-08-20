@@ -16,6 +16,8 @@ class Minesweeper extends Component {
     }
 
 
+
+
     displayGameResult() {
         if (this.state.game.state === "lost") {
             //display lost message
@@ -33,7 +35,7 @@ class Minesweeper extends Component {
         }
     }
 
-    componentDidMount() {
+    createGame() {
         fetch(`${BASE_URL}games`, {
             method: "POST",
             body: JSON.stringify({ difficulty: 0 }),
@@ -50,8 +52,11 @@ class Minesweeper extends Component {
             })
     }
 
+    componentDidMount() {
+        this.createGame()
+    }
+
     handleCellClick = (row, col) => {
-        console.log("clicked", row, col)
         if (this.state.game.state !== "lost" && this.state.game.state !== "won") {
             fetch(`${BASE_URL}games/${this.state.game.id}/check`, {
                 method: "POST",
@@ -62,7 +67,6 @@ class Minesweeper extends Component {
             })
                 .then(resp => resp.json())
                 .then(newGameState => {
-                    console.log(newGameState)
                     this.setState({
                         game: newGameState,
                     })
@@ -73,9 +77,7 @@ class Minesweeper extends Component {
     }
 
     handleFlaggedCell = (event, row, col) => {
-        console.log(event)
         event.preventDefault()
-        console.log('flagged', row, col)
         fetch(`${BASE_URL}games/${this.state.game.id}/flag`, {
             method: "POST",
             body: JSON.stringify({ row: row, col: col }),
@@ -85,17 +87,23 @@ class Minesweeper extends Component {
         })
             .then(resp => resp.json())
             .then(newGameState => {
-                console.log(newGameState)
                 this.setState({
                     game: newGameState
                 })
             })
     }
 
+    resetEvent = () => {
+        this.createGame()
+    }
+
     render() {
         return (
             <div>
                 <h1>{this.state.message}</h1>
+                <section>
+                    <button onClick={this.resetEvent}><span role="img">😄</span></button>
+                </section>
                 <table>
                     <tbody>
                         {this.state.game.board.map((row, i) => {
