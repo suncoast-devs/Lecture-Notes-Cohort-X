@@ -15,23 +15,6 @@ class Minesweeper extends Component {
         }
     }
 
-    displayGameResult() {
-        if (this.state.game.state === "lost") {
-            //display lost message
-            this.setState({
-                message: "Womp, you lost"
-            })
-        } else if (this.state.game.state === "won") {
-            this.setState({
-                message: "Booyah, you won!"
-            })
-        } else {
-            this.setState({
-                message: "still sweepin'..."
-            })
-        }
-    }
-
     createGame() {
         fetch(`${BASE_URL}games`, {
             method: "POST",
@@ -66,8 +49,9 @@ class Minesweeper extends Component {
                 .then(newGameState => {
                     this.setState({
                         game: newGameState,
+                    }, () => {
+                        this.props.updateMessage(this.state.game.state)
                     })
-                    this.displayGameResult()
                 })
         }
 
@@ -105,7 +89,6 @@ class Minesweeper extends Component {
     render() {
         return (
             <div>
-                <h1>{this.state.message}</h1>
                 <section>
                     <select onChange={(event) => this.handleDifficultyChange(event)}>
                         <option value="0">Easy</option>
