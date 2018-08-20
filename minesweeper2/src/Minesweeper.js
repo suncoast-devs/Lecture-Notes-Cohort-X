@@ -36,30 +36,8 @@ class Minesweeper extends Component {
         this.createGame()
     }
 
-    handleCellClick = (row, col) => {
-        if (this.state.game.state !== "lost" && this.state.game.state !== "won") {
-            fetch(`${BASE_URL}games/${this.state.game.id}/check`, {
-                method: "POST",
-                body: JSON.stringify({ row: row, col: col }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(resp => resp.json())
-                .then(newGameState => {
-                    this.setState({
-                        game: newGameState,
-                    }, () => {
-                        this.props.updateMessage(this.state.game.state)
-                    })
-                })
-        }
-
-    }
-
-    handleFlaggedCell = (event, row, col) => {
-        event.preventDefault()
-        fetch(`${BASE_URL}games/${this.state.game.id}/flag`, {
+    checkCellWithAPI = (action, row, col) => {
+        fetch(`${BASE_URL}games/${this.state.game.id}/${action}`, {
             method: "POST",
             body: JSON.stringify({ row: row, col: col }),
             headers: {
@@ -69,9 +47,24 @@ class Minesweeper extends Component {
             .then(resp => resp.json())
             .then(newGameState => {
                 this.setState({
-                    game: newGameState
+                    game: newGameState,
+                }, () => {
+                    this.props.updateMessage(this.state.game.state)
                 })
             })
+    }
+
+    handleCellClick = (row, col) => {
+        if (this.state.game.state !== "lost" && this.state.game.state !== "won") {
+           this.checkCellWithAPI("check", row, col)
+        }
+
+    }
+
+    handleFlaggedCell = (event, row, col) => {
+        event.preventDefault()
+        this.checkCellWithAPI("flag", row, col)
+
     }
 
     resetEvent = () => {
