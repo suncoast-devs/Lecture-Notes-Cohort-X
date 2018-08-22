@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import CharacterList from './CharacterList'
-
-import Character from './Character'
+import OneCharacter from './OneCharacter';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 class App extends Component {
   render() {
-    const title = 'Adventure Time'
     return (
-      <div className="App">
-        <header>
-          <h1>{title}</h1>
-          <CharacterList />
-        </header>
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={AllCharactersList}></Route>
+          <Route path="/heros" exact component={HeroList}></Route>
+          <Route path="/villians" exact component={VillanList}></Route>
+        </Switch>
+      </Router>
     )
   }
 }
