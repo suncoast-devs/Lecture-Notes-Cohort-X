@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Nav from './Components/Nav'
 import HomePage from './Components/HomePage'
 import VillainsList from './Components/VillainsList'
-
+import Villain from './Components/Villain'
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={HomePage}/>
               <Route path="/villains" exact component={VillainsList}/>
-              {/* <Route path="/" exact component={}/> */}
+              <Route path="/villains/:id" exact component={Villain}/>
             </Switch>
           </section>
         </div>
