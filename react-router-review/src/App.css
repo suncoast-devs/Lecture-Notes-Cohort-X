@@ -35,12 +35,12 @@ img {
 
 }
 
-.body>section{
+.image-card{
   margin:1em;
   border:1px grey solid;
   padding:1em;
 }
 
-.body>section>header{
+.image-card>header{
   font-size: 2em;
 }
