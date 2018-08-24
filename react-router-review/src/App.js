@@ -18,8 +18,8 @@ class App extends Component {
           </header>
           <Switch>
             <Route path="/" exact component={CategoryList}/>
-            <Route path="/:category" exact component={PhotoList}/>
-            <Route path="/:category/:index" exact component={PhotoDetail}/>
+            <Route path="/anythingIwant/:category" exact component={PhotoList}/>
+            <Route path="/anythingIwant/:category/:index" exact component={PhotoDetail}/>
           </Switch>
         </div>
       </Router>
