@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AddForm from './Components/AddForm';
 import ListDisplay from './Components/ListDisplay';
+import RandomSelectionDisplay from './Components/RandomSelectionDisplay';
 
 class App extends Component {
   constructor(props) {
@@ -14,13 +15,13 @@ class App extends Component {
 
 
   addItemToBagOWords = (newItem) => {
-      // add item to the list in state
-      this.setState({
-        bagOWords: this.state
-          .bagOWords
-          .concat(newItem),
-      })
-   
+    // add item to the list in state
+    this.setState({
+      bagOWords: this.state
+        .bagOWords
+        .concat(newItem),
+    })
+
   }
 
   selectRandomItem = () => {
@@ -41,12 +42,18 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Grab Bag!</h1>
         </header>
-        <AddForm addItemToList={this.addItemToBagOWords}/>
-        <ListDisplay wordList={this.state.bagOWords}/>
-        <section>
-          <button onClick={this.selectRandomItem}>Select Random</button>
-          <h1>The selected value is {this.state.selectedWord}</h1>
+        <section className="body">
+          <aside className="left">
+            <AddForm addItemToList={this.addItemToBagOWords} />
+            <button onClick={this.selectRandomItem}>Select Random</button>
+            <RandomSelectionDisplay selectedWord={this.state.selectedWord} />
+          </aside>
+          <section className="right">
+            <h3>Currently in Bag!</h3>
+            <ListDisplay wordList={this.state.bagOWords} />
+          </section>
         </section>
+
       </div>
     );
   }
