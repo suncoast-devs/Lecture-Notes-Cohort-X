@@ -4,7 +4,9 @@ class LetterButton extends Component {
     render() {
         if (this.props.picked.includes(this.props.letter)) {
             return (
-             <span></span>
+                <button disabled>
+                  *
+                </button>
             )
         } else {
 
