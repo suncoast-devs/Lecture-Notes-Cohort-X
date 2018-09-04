@@ -18,6 +18,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={HomePage}/>
             <Route path="/:category/search/:name" exact component={ApiSearch} />
+            {/* <Route path="/movie/:id" exact component={MovieComponent} /> */}
           </Switch>
         </div>
       </Router>

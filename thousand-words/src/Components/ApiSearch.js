@@ -9,6 +9,8 @@ class ApiSearch extends Component {
                 {this.props.match.params.category}<br/>
                 for <br/>
                 {this.props.match.params.name}<br/>
+
+    
             </div>
         );
     }
