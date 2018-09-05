@@ -2,58 +2,73 @@
     <section>
         <header class="header">Now Showing</header>
         <ul>
-            <li v-for="movie in movies" v-bind:key="movie.id">
-                <header>{{movie.title}}</header>
-                <img :src="getImageUrl(movie.poster_path)" alt="">
-                <section>released:{{movie.release_date}}</section>
-            </li>  
+            <Movie  
+              v-for="movieFromForLoop in movies"
+              :key="movieFromForLoop.id" 
+              :movieDataAsProp="movieFromForLoop"
+              v-on:add-to-seen="addToList"
+              />
+        </ul>
+        <header>Movies I saw</header>
+        <ul>
+            <li v-for="movie in seenMovies"
+                :key="movie.id"
+                 >
+                 {{movie.title}}
+            </li>
         </ul>
     </section>
 </template>
 
 <script>
-const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=2b39f89969ae6ac7cc55346160e79f11&language=en-US&page=1`
+import axios from 'axios'
+import Movie from "./Movie.vue";
+const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=2b39f89969ae6ac7cc55346160e79f11&language=en-US&page=1`;
 
 export default {
   name: "MovieList",
-  data:function() {
-      return {
-          movies:[]
-      }
+  components: {
+    Movie
   },
-  mounted:function(){
-      fetch(URL)
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data)
-            this.movies = data.results.reverse()
-      })
+  data: function() {
+    return {
+      movies: [],
+      seenMovies: []
+    };
   },
-  methods:{
-      getImageUrl(poster_path){
-          return 'https://image.tmdb.org/t/p/w500/' + poster_path
-      }
+  mounted: function() {
+    axios.get(URL)
+      .then(resp => {
+        console.log(resp);
+        this.movies = resp.data.results.reverse();
+      });
+  },
+  methods: {
+    addToList: function(seenMovie) {
+      console.log("caught event", seenMovie);
+      this.seenMovies.push(seenMovie);
+    }
   }
 };
 </script>
 
 <style scoped>
-*{
-    padding:0;
-    margin:0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.header{
-    padding:1em;
-    border:4px yellow dotted;
+.header {
+  padding: 1em;
+  border: 4px yellow dotted;
 }
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
 
-li{
-    display:flex;
-    align-items: center;
-    flex-direction: column;
+li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 </style>
