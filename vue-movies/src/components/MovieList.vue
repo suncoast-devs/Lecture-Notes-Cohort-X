@@ -22,7 +22,6 @@ export default {
       }
   },
   mounted:function(){
-      console.log("mounted")
       fetch(URL)
         .then(resp => resp.json())
         .then(data => {
