@@ -2,35 +2,39 @@
     <section>
         <header class="header">Now Showing</header>
         <ul>
-            <li>
-                <header>Toy Story</header>
-                <img src="http://placekitten.com/200/300" alt="">
-                <section>genre</section>
+            <li v-for="movie in movies" v-bind:key="movie.id">
+                <header>{{movie.title}}</header>
+                <img :src="getImageUrl(movie.poster_path)" alt="">
+                <section>released:{{movie.release_date}}</section>
             </li>  
-             <li>
-                <header>Toy Story</header>
-                <img src="http://placekitten.com/200/300" alt="">
-                <section>genre</section>
-            </li>   
-            <li>
-                <header>Toy Story</header>
-                <img src="http://placekitten.com/200/300" alt="">
-                <section>genre</section>
-            </li>   
-            <li>
-                <header>Toy Story</header>
-                <img src="http://placekitten.com/200/300" alt="">
-                <section>genre</section>
-            </li>
         </ul>
     </section>
 </template>
 
 <script>
-const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=<<your key here>>>&language=en-US&page=1`
+const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=2b39f89969ae6ac7cc55346160e79f11&language=en-US&page=1`
 
 export default {
-  name: "MovieList"
+  name: "MovieList",
+  data:function() {
+      return {
+          movies:[]
+      }
+  },
+  mounted:function(){
+      console.log("mounted")
+      fetch(URL)
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            this.movies = data.results.reverse()
+      })
+  },
+  methods:{
+      getImageUrl(poster_path){
+          return 'https://image.tmdb.org/t/p/w500/' + poster_path
+      }
+  }
 };
 </script>
 
@@ -52,6 +56,5 @@ li{
     display:flex;
     align-items: center;
     flex-direction: column;
-    
 }
 </style>
