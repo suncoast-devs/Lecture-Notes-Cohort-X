@@ -1,0 +1,51 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font: 16px / 1 sans-serif;
+}
+
+.sub-header-text{
+  color:#f6f6f6;
+}
+
+#orange-blossom{
+  color:orange;
+  background-color: orangered;
+}
+
+.upcoming-races{
+  color:olivedrab;
+}
+
+.header-text{
+  color:salmon;
+}
+
+span{
+  border:3px dotted green;
+
+}
+
+li{
+  margin:1em;
+}
+
+.upcoming-races-section{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+ul{
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-races{
+  display: flex;
+}

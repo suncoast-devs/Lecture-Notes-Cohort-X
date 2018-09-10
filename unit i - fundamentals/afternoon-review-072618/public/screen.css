@@ -1,0 +1,23 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font: 16px / 1 sans-serif;
+
+  background-image: url("/images/ben.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+section{
+  color:white;
+  border:3px solid pink;
+  
+  height: 30em;
+  width: 10em;
+
+}

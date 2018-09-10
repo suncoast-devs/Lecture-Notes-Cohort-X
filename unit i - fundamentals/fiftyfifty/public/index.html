@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fiftyfifty</title>
+    <link rel="stylesheet" href="/screen.css">
+  </head>
+  <body>
+    <h1>Let's Raffle!</h1>
+    <section>
+      <h2>Current Total Fund</h2>
+      $<span id="currentTotal">0</span>
+    </section>
+    <input type="text" id="nameTextbox" placeholder="Name"/>
+    <input type="number" id="numberOfTicketsBoughtBox" placeholder="Number Bought">
+    <button id="addNameToBucketButton">Add Person to bucket</button>
+    <ul id="bucketList"></ul>
+    <button class="announceWinner">Announce Winner</button>
+    <section>
+      <h3>Winner is: <span class="winner"></span></h3>
+    </section>
+    <script src="/main.js" charset="utf-8"></script>
+  </body>
+</html>
