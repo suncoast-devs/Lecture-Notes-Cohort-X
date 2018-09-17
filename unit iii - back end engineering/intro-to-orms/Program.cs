@@ -65,6 +65,18 @@ namespace intro_to_orms
 
             // db.SaveChanges();
 
+                System.Console.WriteLine("Enter a Board Game to update:");
+            var name = Console.ReadLine();
+
+            var db = new HobbiesContext();
+
+            var game = db.BoardGamesTable.FirstOrDefault(f => f.Name == name);
+
+            game.LastPlayed = DateTime.Now;
+
+            db.SaveChanges();
+
+
         }
     }
 }

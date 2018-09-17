@@ -1,3 +1,5 @@
+using System;
+
 namespace intro_to_orms.Models
 {
     public class BoardGames
@@ -9,5 +11,7 @@ namespace intro_to_orms.Models
         public string Genre { get; set; }
         public string Difficulty { get; set; }
         public int TimeLength { get; set; }
+
+        public DateTime LastPlayed { get; set; }
     }
 }

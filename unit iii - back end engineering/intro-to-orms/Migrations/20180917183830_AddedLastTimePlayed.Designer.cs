@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using intro_to_orms;
@@ -9,9 +10,10 @@ using intro_to_orms;
 namespace intro_to_orms.Migrations
 {
     [DbContext(typeof(HobbiesContext))]
-    partial class HobbiesContextModelSnapshot : ModelSnapshot
+    [Migration("20180917183830_AddedLastTimePlayed")]
+    partial class AddedLastTimePlayed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
