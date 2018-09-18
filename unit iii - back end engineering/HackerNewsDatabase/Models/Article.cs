@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace HackerNewsDatabase.Models
 {
@@ -11,6 +12,8 @@ namespace HackerNewsDatabase.Models
 
         public int UserId { get; set; }
         public User User { get; set; }
+
+        public List<ArticleFavorite> ArticleFavorite { get; set; }
 
     }
 }

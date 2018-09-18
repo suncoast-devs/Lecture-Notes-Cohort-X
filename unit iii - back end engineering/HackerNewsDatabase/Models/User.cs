@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace HackerNewsDatabase.Models
 {
@@ -8,5 +9,7 @@ namespace HackerNewsDatabase.Models
         public int Karma { get; set; }
         public string About { get; set; }
         public DateTime Created { get; set; }
+
+        public List<ArticleFavorite> ArticleFavorite { get; set; }
     }
 }
