@@ -1,4 +1,5 @@
 ﻿using System;
+using HackerNewsDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -19,12 +20,16 @@ namespace HackerNewsDatabase
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseNpgsql("server=localhost;database=HackerNews");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {}
+        { }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Article> Articles { get; set; }
+
     }
 }
