@@ -3,15 +3,17 @@ using System;
 using HackerNewsDatabase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HackerNewsDatabase.Migrations
 {
     [DbContext(typeof(HackerNewsContext))]
-    partial class HackerNewsContextModelSnapshot : ModelSnapshot
+    [Migration("20180918154517_AddedCommentTableWithFK_ForReal")]
+    partial class AddedCommentTableWithFK_ForReal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

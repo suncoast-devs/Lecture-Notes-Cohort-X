@@ -3,15 +3,17 @@ using System;
 using HackerNewsDatabase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HackerNewsDatabase.Migrations
 {
     [DbContext(typeof(HackerNewsContext))]
-    partial class HackerNewsContextModelSnapshot : ModelSnapshot
+    [Migration("20180918154154_AddedCommentTableWithFK")]
+    partial class AddedCommentTableWithFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,28 +43,6 @@ namespace HackerNewsDatabase.Migrations
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("HackerNewsDatabase.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ArticleId");
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("HackerNewsDatabase.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -83,19 +63,6 @@ namespace HackerNewsDatabase.Migrations
 
             modelBuilder.Entity("HackerNewsDatabase.Models.Article", b =>
                 {
-                    b.HasOne("HackerNewsDatabase.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HackerNewsDatabase.Models.Comment", b =>
-                {
-                    b.HasOne("HackerNewsDatabase.Models.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("HackerNewsDatabase.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
