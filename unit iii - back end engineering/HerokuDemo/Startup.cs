@@ -19,6 +19,7 @@ namespace HerokuDemo
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            new CartoonsContext().Database.Migrate();
         }
 
         public IConfiguration Configuration { get; }
